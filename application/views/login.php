@@ -7,13 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <base href="<?php echo site_url();?>">
     <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="javascript/rem.js"></script>
+    <script src="javascript/jquery-1.12.4.js"></script>
+    <script src="javascript/login.js"></script>
+    <script src="javascript/jquery.mobile-1.4.5.js"></script>
     <title>登录</title>
 </head>
 <body>
-<form action="welcome/resigin" id="login-form" method="post">
+<form action="user/resigin" id="login-form" method="post" data-ajax="false">
     <div>
         <p>
         <label for="username">用户名:</label>
@@ -21,11 +25,11 @@
         <p>
         <label for="password">密码:</label>
         <input type="password" name="password" id="password" placeholder="请输入密码"></p>
-        <input type="submit" value="登录">
+        <button class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-user">登录</button>
+        <button class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-tag" type="button" id="register_page">新用户注册</button>
     </div>
 
 </form>
-
 
 </body>
 </html>

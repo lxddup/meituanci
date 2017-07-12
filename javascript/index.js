@@ -40,9 +40,8 @@ $(document).on("pageinit",function(event){
         location.href = "welcome/detail";
     });
     $("#login").on("tap", function(){
-        location.href = "welcome/login_page";
+        location.href = "user/login_page";
     });
-
 
 
 

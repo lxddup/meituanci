@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>团购详情</title>
-    <base href="<?php echo site_url();?>">
+    <base href="<?php echo site_url(); ?>">
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
     <link rel="stylesheet" href="css/common.css">
@@ -26,20 +26,21 @@
             团购详情
         </div>
         <div id="collect">
-            <span>收藏</span>
+            <input type="hidden" id="hidden-product-id" value="<?php echo $row->product_id?>">
+            <span id="collect-btn" class="<?php echo $row->collect=='取消'?'active':''?>"><?php echo $row->collect?></span>
             <span>导航</span>
         </div>
     </div>
     <div role="main" class="ui-content">
         <div id="banner">
             <div class="product-name">
-                <p>鲜芋仙</p>
-                <p>10元代金券一份</p>
+                <p><?php echo $row->product_name?></p>
+                <p><?php echo $row->description?></p>
             </div>
         </div>
         <div id="price">
-            <span class="preferential-price"><span>7.5</span>元</span>
-            <span>门市价:10元</span>
+            <span class="preferential-price"><span><?php echo $row->discount_price?></span>元</span>
+            <span>门市价:<?php echo $row->price?>元</span>
             <button data-role="none" class="buy">立即购买</button>
         </div>
         <div id="explain">
@@ -78,8 +79,8 @@
             <h3 class="info">商家信息</h3>
             <div class="contact">
                 <div class="address">
-                    <p class="name">鲜芋仙（道外百盛店）</p>
-                    <p class="position">道外区东直路118号百盛购物中心太平桥店1层</p>
+                    <p class="name"><?php echo $row->business_name?></p>
+                    <p class="position"><?php echo $row->business_address?></p>
                     <p class="nearest">离我最近</p>
                 </div>
                 <div class="phone"></div>
@@ -136,240 +137,39 @@
                     <span class="score">4.4分</span>
                 </div>
             </div>
-            <div class="item">
+            <?php foreach ($results as $comment){?>
+                <div class="item">
                 <div class="item-title">
                     <div class="header">
                         <img src="img/header.jpg" alt="">
                     </div>
                     <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
+                        <p class="name"><?php echo $comment->username?></p>
+<!--                        <img src="img/star-yellow.png" alt="">-->
+<!--                        <img src="img/star-yellow.png" alt="">-->
+<!--                        <img src="img/star-yellow.png" alt="">-->
+<!--                        <img src="img/star-yellow.png" alt="">-->
+<!--                        <img src="img/star-gray.png" alt="">-->
+                        <div class="comment-score">
+                            <div style="width: <?php echo $comment->score * 20?>%">
+
+                            </div>
+                        </div>
+                        <span class="date"><?php echo $comment->time?></span>
                     </div>
                     <img src="img/earnest.png" alt="" class="earnest">
                 </div>
                 <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
+                    <?php echo $comment->content?>
                 </div>
                 <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
+                    <?php foreach ($comment->imgs as $img){?>
+                        <img src="<?php echo $img->path?>" alt="">
+                    <?php }?>
                 </div>
                 <div class="item-firm"></div>
             </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
-            <div class="item">
-                <div class="item-title">
-                    <div class="header">
-                        <img src="img/header.jpg" alt="">
-                    </div>
-                    <div class="desc">
-                        <p class="name">晴小乐乐乐</p>
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-yellow.png" alt="">
-                        <img src="img/star-gray.png" alt="">
-                        <span class="date">2017-07-02</span>
-                    </div>
-                    <img src="img/earnest.png" alt="" class="earnest">
-                </div>
-                <div class="item-content">
-                    好吃好吃 夏天吃太美好了 啊啊啊啊啊 上瘾上瘾 甜甜甜 甜品真是太好吃 冬天吃热的 夏天吃凉的 怎么还不够80个字 好多店 这个店还不错 坐的位置很多 环境也好
-                </div>
-                <div class="item-img clearfix">
-                    <img src="img/item1.jpg" alt="">
-                    <img src="img/item2.jpg" alt="">
-                    <img src="img/item3.jpg" alt="">
-                </div>
-                <div class="item-firm"></div>
-            </div>
+            <?php }?>
             <p class="check">查看全部评价</p>
         </div>
         <div id="go-top"></div>

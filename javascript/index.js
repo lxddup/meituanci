@@ -29,24 +29,42 @@ $(document).on("pageinit",function(event){
         });
     });
 
+    $("#menu li").on("tap", function(){
+        var productId = $(this).children('.product-id').val();
+        location.href = "welcome/detail/"+productId;
+    });
+
+    $("#login").on("tap", function(){
+        location.href = "user/login_page";
+    });
+
+    $("#user-detail").on("tap", function(){
+        location.href = "user/user_detail";
+    });
+
+    $("#logout").on("tap", function(){
+        location.href = "user/logout";
+    });
+
+
     function swipeGuide(index){
         $navSpan.eq(index).addClass("active").siblings().removeClass("active");
         $guideUl.css({
             left: -index * $guideUl.width() / 2
         });
     }
-
-    $("#menu li").on("tap", function(){
-        location.href = "welcome/detail";
-    });
-    $("#login").on("tap", function(){
-        location.href = "user/login_page";
-    });
-
-
-
 });
 
+
+/*$(document).ready(function(){
+
+});
+width()
+innerWidth()
+outerWidth(true)
+
+
+*/
 
 
 
